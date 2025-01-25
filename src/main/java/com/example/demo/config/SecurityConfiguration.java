@@ -68,7 +68,7 @@ public class SecurityConfiguration {
 
                             // Employee
                             .requestMatchers("/api/employee/signIn").permitAll()
-                            .requestMatchers("/api/employee/getAllEmployees").hasAnyRole("DIRECTOR" , "ADMIN")
+                            .requestMatchers("/api/employee/getAllEmployees").hasAnyRole("DIRECTOR")
                             .requestMatchers("/api/employee/addEmployee").hasAnyRole("DIRECTOR" , "ADMIN")
                             .requestMatchers("/api/employee/findEmployee/**").hasAnyRole("DIRECTOR" , "ADMIN")
                             .requestMatchers("/api/employee/deleteEmployee/**").hasAnyRole("ADMIN")
@@ -76,32 +76,32 @@ public class SecurityConfiguration {
 
                             // Client
                             .requestMatchers("/api/client/getAllClients").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/client/addClient").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
+                            .requestMatchers("/api/client/addClient").hasAnyRole("ADMINISTRATOR")
                             .requestMatchers("/api/client/getClient").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/client/updateClient/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/client/addArchive/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
+                            .requestMatchers("/api/client/updateClient/**").hasAnyRole("ADMINISTRATOR")
+                            .requestMatchers("/api/client/addArchive/**").hasAnyRole("ADMINISTRATOR")
 
 
                             //Advertisement
-                            .requestMatchers("/api/ad/createAd").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/ad/getAllAds").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/ad/getAd/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/ad/updateAd").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/ad/deleteAd").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/ad/stopAd/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
+                            .requestMatchers("/api/ad/createAd").hasAnyRole("SALES")
+                            .requestMatchers("/api/ad/getAllAds").hasAnyRole("DIRECTOR" , "ADMIN" , "SALES")
+                            .requestMatchers("/api/ad/getAd/**").hasAnyRole("DIRECTOR" , "ADMIN" , "SALES")
+                            .requestMatchers("/api/ad/updateAd").hasAnyRole("SALES")
+                            .requestMatchers("/api/ad/deleteAd").hasAnyRole("ADMIN" , "SALES")
+                            .requestMatchers("/api/ad/stopAd/**").hasAnyRole("ADMIN" , "SALES")
 
                             // Filters (Statistics)
 
-                            .requestMatchers("/api/statistics/daily_registered_clients").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/monthly_registered_clients").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/best_employees").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/best_employee").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getEmployeesByRole/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getEmployeesByAge/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getAdvertisementPriceByType/**").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getAdvertisementMostAddedByEmployee").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getMonthlyIncludedAdvertisement").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
-                            .requestMatchers("/api/statistics/getMonthlyStoppedAdvertisement").hasAnyRole("DIRECTOR" , "ADMIN" , "ADMINISTRATOR")
+                            .requestMatchers("/api/statistics/daily_registered_clients").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/monthly_registered_clients").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/best_employees").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/best_employee").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getEmployeesByRole/**").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getEmployeesByAge/**").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getAdvertisementPriceByType/**").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getAdvertisementMostAddedByEmployee").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getMonthlyIncludedAdvertisement").hasAnyRole("DIRECTOR")
+                            .requestMatchers("/api/statistics/getMonthlyStoppedAdvertisement").hasAnyRole("DIRECTOR")
                             .anyRequest().authenticated()
 
                     );
